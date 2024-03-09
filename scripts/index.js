@@ -26,3 +26,16 @@ async function callUsersApi() {
   document.getElementById("fetch-users-btn").addEventListener("click", function() {
     displayUserData();
   });
+
+  document.getElementById("search-input").addEventListener("input", function() {
+    const searchTerm = this.value.trim().toLowerCase(); 
+    const userListItems = document.querySelectorAll("#user-list li");
+    userListItems.forEach(item => {
+      const userName = item.textContent.toLowerCase();
+      if (userName.includes(searchTerm)) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  });
