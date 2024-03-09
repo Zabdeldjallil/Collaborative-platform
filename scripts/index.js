@@ -1,4 +1,4 @@
-console.log('coucou')
+
 async function callUsersApi() {
     try {
      
@@ -15,6 +15,7 @@ async function callUsersApi() {
   async function displayUserData() {
     const users = await callUsersApi();
     const userListElement = document.getElementById("user-list");
+    userListElement.innerHTML = '';
     users.forEach(user => {
       const listItem = document.createElement("li");
       listItem.textContent = `Name: ${user.name}, Email: ${user.email}`;
@@ -22,4 +23,6 @@ async function callUsersApi() {
     });
   }
 
-  displayUserData();
+  document.getElementById("fetch-users-btn").addEventListener("click", function() {
+    displayUserData();
+  });
